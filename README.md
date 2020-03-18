@@ -6,7 +6,7 @@ http://www.statmt.org/wmt20/quality-estimation.html
 The data can be downloaded directly at:  
 https://github.com/facebookresearch/mlqe/raw/master/data/mlqe_train_dev.tgz
 
-## Resources for training the NMT models
+## Additional resources - used for training the NMT models
 
 ### German-English
 
