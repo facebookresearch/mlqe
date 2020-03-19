@@ -1,0 +1,6 @@
+For the NMT model files, each $sl-$tl folder has:
+
+- $sl-$tl.pt: NMT model file
+- dict.[$sl,$tl].txt: model vocabulary files for source and target languages
+- bpecodes: bpe vocabulary file
+- sentencepiece.bpe.*: sentencepiece vocabulary (for si-en and ne-en only) 
