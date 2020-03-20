@@ -1,7 +1,19 @@
 # MultiLingual Quality Estimation (MLQE) Dataset
 
 This repository contains data for the 2020 Quality Estimation Shared Task:  
-http://www.statmt.org/wmt20/quality-estimation.html  
+http://www.statmt.org/wmt20/quality-estimation-task.html  
+
+## Training and development data
+
+Check the 'data' folder 
+
+## NMT models
+
+Check the 'nmt-models' folder 
+
+## Parallel data used to train the NMT data
+
+Check 'http://www.statmt.org/wmt20/quality-estimation-task.html' 
 
 ## Additional parallel data
 
