@@ -1,8 +1,9 @@
-# Copyright (c) Facebook, Inc. and its affiliates.
-# All rights reserved.
-#
-# This source code is licensed under the license found in the
-# LICENSE file in the root directory of this source tree.
+Copyright (c) Facebook, Inc. and its affiliates.
+
+All rights reserved.
+
+
+This source code is licensed under the license found in the LICENSE file in the root directory of this source tree.
 
 ## Requirements:
 
@@ -46,13 +47,16 @@ done
 
 Binarize the data for faster translation:
 
-```fairseq-preprocess --srcdict $MODEL_DIR/dict.$SRC_LANG.txt --tgtdict $MODEL_DIR/dict.$TGT_LANG.txt --source-lang ${SRC_LANG} --target-lang ${TGT_LANG} --testpref $TMP/preprocessed.tok.bpe --destdir $TMP/bin --workers 4```
+```
+fairseq-preprocess --srcdict $MODEL_DIR/dict.$SRC_LANG.txt --tgtdict $MODEL_DIR/dict.$TGT_LANG.txt --source-lang ${SRC_LANG} --target-lang ${TGT_LANG} --testpref $TMP/preprocessed.tok.bpe --destdir $TMP/bin --workers 4
+```
 
 Translate
 
-```CUDA_VISIBLE_DEVICES=$GPU fairseq-generate $TMP/bin --path ${MODEL_DIR}/${SRC_LANG}-${TGT_LANG}.pt --beam 5 --source-lang $SRC_LANG --target-lang $TGT_LANG --no-progress-bar --unkpen 5 > $TMP/fairseq.out```
-
-```grep ^H $TMP/fairseq.out | cut -f3- > $TMP/mt.out```
+```
+CUDA_VISIBLE_DEVICES=$GPU fairseq-generate $TMP/bin --path ${MODEL_DIR}/${SRC_LANG}-${TGT_LANG}.pt --beam 5 --source-lang $SRC_LANG --target-lang $TGT_LANG --no-progress-bar --unkpen 5 > $TMP/fairseq.out
+grep ^H $TMP/fairseq.out | cut -f3- > $TMP/mt.out
+```
 
 Post-process
 
@@ -62,21 +66,24 @@ For Sinhala-English and Nepalese-English the pipeline is slightly different:
 
 Preprocess:
 
-```bash $FLORES/scripts/indic_norm_tok.sh $SRC_LANG $INPUT.$SRC_LANG > $TMP/preprocessed.tok.$SRC_LANG```
-
-```perl $MOSES_DECODER/tokenizer/tokenizer.perl -threads 80 -a -l $TGT_LANG < $INPUT.$TGT_LANG > $TMP/preprocessed.tok.$TGT_LANG```
-
-```python $FLORES/scripts/spm_encode.py --model $BPE --output_format piece --inputs $TMP/preprocessed.tok.$SRC_LANG $TMP/preprocessed.tok.$TGT_LANG --outputs $TMP/preprocessed.tok.bpe.$SRC_LANG $TMP/preprocessed.tok.bpe.$TGT_LANG```
+```
+bash $FLORES/scripts/indic_norm_tok.sh $SRC_LANG $INPUT.$SRC_LANG > $TMP/preprocessed.tok.$SRC_LANG
+perl $MOSES_DECODER/tokenizer/tokenizer.perl -threads 80 -a -l $TGT_LANG < $INPUT.$TGT_LANG > $TMP/preprocessed.tok.$TGT_LANG
+python $FLORES/scripts/spm_encode.py --model $BPE --output_format piece --inputs $TMP/preprocessed.tok.$SRC_LANG $TMP/preprocessed.tok.$TGT_LANG --outputs $TMP/preprocessed.tok.bpe.$SRC_LANG $TMP/preprocessed.tok.bpe.$TGT_LANG
+```
 
 Binarize
 
-```fairseq-preprocess --srcdict ${MODEL_DIR}/dict.${SRC_LANG}.txt --source-lang ${SRC_LANG} --target-lang ${TGT_LANG} --testpref ${TMP}/preprocessed.tok.bpe --destdir $TMP/bin --workers 4 --joined-dictionary```
+```
+fairseq-preprocess --srcdict ${MODEL_DIR}/dict.${SRC_LANG}.txt --source-lang ${SRC_LANG} --target-lang ${TGT_LANG} --testpref ${TMP}/preprocessed.tok.bpe --destdir $TMP/bin --workers 4 --joined-dictionary
+```
 
 Translate
 
-```CUDA_VISIBLE_DEVICES=${GPU} fairseq-generate ${TMP}/bin --path ${MODEL_DIR}/${SRC_LANG}-${TGT_LANG}.pt --beam 5 --source-lang ${SRC_LANG} --target-lang ${TGT_LANG} --no-progress-bar --remove-bpe=sentencepiece --lenpen 1.2 > ${TMP}/fairseq.out```
-
-```grep ^H ${TMP}/fairseq.out | cut -f3- > ${OUTPUT}```
+```
+CUDA_VISIBLE_DEVICES=${GPU} fairseq-generate ${TMP}/bin --path ${MODEL_DIR}/${SRC_LANG}-${TGT_LANG}.pt --beam 5 --source-lang ${SRC_LANG} --target-lang ${TGT_LANG} --no-progress-bar --remove-bpe=sentencepiece --lenpen 1.2 > ${TMP}/fairseq.out
+grep ^H ${TMP}/fairseq.out | cut -f3- > ${OUTPUT}
+```
 
 For Russian-English:
 Follow the instructions on fairseq webpage: https://github.com/pytorch/fairseq/tree/master/examples/wmt19
