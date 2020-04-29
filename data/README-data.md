@@ -10,6 +10,7 @@ Each source-target language ($sl-$tl) directory has a `*.tsv` file (training and
 8) model_scores: NMT model score for sentence
 
 `*.doc_ids` files contain the name of the article where each original segment came from
+
 `word-probas` directory contains the following files:
  
 * `word_probas.*.$sl$tl`: word log-probabilities from the NMT model for each decoded token 
