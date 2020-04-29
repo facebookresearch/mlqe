@@ -35,7 +35,7 @@ reference translations are not available, just create a dummy reference file e.g
 
 ## Translation
 
-For Romanian-English, Estonian-English, English-German and English-Chinese:
+For **Romanian-English**, **Estonian-English**, **English-German** and **English-Chinese**:
 
 Preprocess the input data:
 ```
@@ -62,7 +62,7 @@ Post-process
 
 ```sed -r 's/(@@ )| (@@ ?$)//g' < $TMP/mt.out | perl $MOSES_DECODER/scripts/tokenizer/detokenizer.perl -l $TGT_LANG > $OUTPUT```
 
-For Sinhala-English and Nepalese-English the pipeline is slightly different:
+For **Sinhala-English** and **Nepalese-English** the pipeline is slightly different:
 
 Preprocess:
 
@@ -85,6 +85,6 @@ CUDA_VISIBLE_DEVICES=${GPU} fairseq-generate ${TMP}/bin --path ${MODEL_DIR}/${SR
 grep ^H ${TMP}/fairseq.out | cut -f3- > ${OUTPUT}
 ```
 
-For Russian-English:
+For **Russian-English**:
 Follow the instructions on fairseq webpage: https://github.com/pytorch/fairseq/tree/master/examples/wmt19
 
