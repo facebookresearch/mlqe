@@ -51,6 +51,19 @@ Check 'http://www.statmt.org/wmt20/quality-estimation-task.html'
 
 [Flores Iterative Back Translation](https://github.com/facebookresearch/flores#train-iterative-back-translation-models)
 
+## Citation
+
+If you use this data in your work, please cite:
+
+```bibtex
+@inproceedings{
+  title={Unsupervised Quality Estimation for Neural Machine Translation},
+  author={Marina Fomicheva, Shuo Sun, Lisa Yankovskaya, Fr\'{e}d\'{e}ric Blain, Francisco Guzm\'{a}n, Mark Fishel, Nikolaos Aletras, Vishrav Chaudhary, Lucia Specia},
+  journal={arXiv preprint arXiv:2005.10608},
+  year={2020}
+}
+```
+
 ## Changelog
 - 2020-03-15: Adding details about training data for NMT models
 - 2020-03-19: Releasing dataset
