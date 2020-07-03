@@ -13,6 +13,7 @@ Each source-target language ($sl-$tl) directory has a `*.tsv` file (training and
 
 `word-probas` directory contains the following files:
  
-* `word_probas.*.$sl$tl`: word log-probabilities from the NMT model for each decoded token 
-* `mt.*.$sl$tl`: the actual output of the NMT model before any post-processing (same number of tokens as log-probas above)
+* `word_probas.*.$sl$tl`: log-probabilities from the NMT model for each decoded token including the <eos> token
+* `mt.*.$sl$tl`: the actual output of the NMT model before any post-processing, corresponding to the log-probas
+ above (the <eos> token is not printed, so the number of log-probabilities equals the number of tokens plus 1)
 
