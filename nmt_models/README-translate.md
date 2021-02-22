@@ -55,7 +55,7 @@ Translate
 
 ```
 CUDA_VISIBLE_DEVICES=$GPU fairseq-generate $TMP/bin --path ${MODEL_DIR}/${SRC_LANG}-${TGT_LANG}.pt --beam 5 --source-lang $SRC_LANG --target-lang $TGT_LANG --no-progress-bar --unkpen 5 > $TMP/fairseq.out
-grep ^H $TMP/fairseq.out | cut -f3- > $TMP/mt.out
+grep ^H $TMP/fairseq.out | cut -d- -f2- | sort -n | cut -f3- > $TMP/mt.out
 ```
 
 Post-process
@@ -82,7 +82,7 @@ Translate
 
 ```
 CUDA_VISIBLE_DEVICES=${GPU} fairseq-generate ${TMP}/bin --path ${MODEL_DIR}/${SRC_LANG}-${TGT_LANG}.pt --beam 5 --source-lang ${SRC_LANG} --target-lang ${TGT_LANG} --no-progress-bar --remove-bpe=sentencepiece --lenpen 1.2 > ${TMP}/fairseq.out
-grep ^H ${TMP}/fairseq.out | cut -f3- > ${OUTPUT}
+grep ^H ${TMP}/fairseq.out | cut -d- -f2- | sort -n | cut -f3- > ${OUTPUT}
 ```
 
 For **Russian-English**:
