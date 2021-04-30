@@ -11,11 +11,9 @@ Check the 'data' folder
 
 Check the 'nmt-models' folder 
 
-## Parallel data used to train the NMT data
+## Parallel data used to train the NMT models
 
 Check 'http://www.statmt.org/wmt20/quality-estimation-task.html' 
-
-## Additional parallel data
 
 ### German-English
 
