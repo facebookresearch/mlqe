@@ -54,11 +54,13 @@ Check 'http://www.statmt.org/wmt20/quality-estimation-task.html'
 If you use this data in your work, please cite:
 
 ```bibtex
-@inproceedings{
-  title={Unsupervised Quality Estimation for Neural Machine Translation},
-  author={Marina Fomicheva, Shuo Sun, Lisa Yankovskaya, Fr\'{e}d\'{e}ric Blain, Francisco Guzm\'{a}n, Mark Fishel, Nikolaos Aletras, Vishrav Chaudhary, Lucia Specia},
-  journal={arXiv preprint arXiv:2005.10608},
-  year={2020}
+@article{tacl2020,
+    title = {Unsupervised Quality Estimation for Neural Machine Translation},
+    author = {Fomicheva, Marina and Sun, Shuo and Yankovskaya, Lisa and Blain, Frédéric and Guzmán, Francisco and Fishel, Mark and Aletras, Nikolaos and Chaudhary, Vishrav and Specia, Lucia},
+    journal = {Transactions of the Association for Computational Linguistics},
+    volume = {8},
+    pages = {539-555},
+    year = {2020}
 }
 ```
 
